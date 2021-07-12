@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printd T-Shirt - RedStore</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+      {% for message in messages %}
+           <p style="color: red;">{{ message }}</p>
+      {% endfor %}
+{% endif %}
+{% endwith %}
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="/"><img src="{{ url_for('static',filename='images/logo.png') }}" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="/register">Account</a></li>
+                </ul>
+            </nav>
+            <a href="/cart"><img src="{{ url_for('static',filename='images/cart.png') }}" width="30px" height="30px"></a>
+            <img src="{{ url_for('static',filename='images/menu.png') }}" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+    <!-- ------------Account-page------------------- -->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{{ url_for('static',filename='images/image1.png') }}" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+
+                        <form id="LoginForm" action="{{url_for('login')}}" method="POST" >
+                            <input type="text" placeholder="username" name="username">
+                            <input type="password" placeholder="password" name="password">
+                            <button type="submit" class="btn">Login</button>
+
+                        </form>
+
+                        <form id="RegForm" action="{{url_for('register')}}" method="POST" >
+                            <input type="text" placeholder="username" name="username">
+                            <input type="email" placeholder="email" name="email">
+                            <input type="password" placeholder="password" name="password">
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------footer----------- -->
+
+
+        <!-- ------------------- js for toggle menu-------------- -->
+        <script>
+            var MenuItems = document.getElementById("MenuItems");
+
+            MenuItems.style.maxHeight = "0px";
+
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                }
+            }
+
+        </script>
+        <!-- ------------------- js for Account form-------------- -->
+
+        <script>
+            var LoginForm = document.getElementById("LoginForm");
+            var RegForm = document.getElementById("RegForm");
+            var Indicator = document.getElementById("Indicator");
+
+            function register() {
+                RegForm.style.transform = "translateX(0px)";
+                LoginForm.style.transform = "translateX(0px)";
+                Indicator.style.transform = "translateX(100px)";
+
+            }
+            function login() {
+                RegForm.style.transform = "translateX(300px)";
+                LoginForm.style.transform = "translateX(300px)";
+                Indicator.style.transform = "translateX(0px)";
+            }
+
+
+        </script>
+
+</body>
+
+</html>

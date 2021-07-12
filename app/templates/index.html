@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="small-container">
+<h2 class="title">Sản Phẩm</h2>
+
+        <div class="row">
+            {% for d in data %}
+            <div class="col-4">
+                <a href="{{url_for('detail',id=d.id)}}"><img  width="200" height="250" src="{{url_for('static', filename='images/uploads/' + d.images)}}"></a>
+                <a href="{{url_for('detail',id=d.id)}}"><h4>{{d.name_product}}</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>{{d.price}}</p>
+            </div>
+    {% endfor %}
+        </div>
+</div>
+{% endblock %}

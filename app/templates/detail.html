@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block detail %}
+
+<div class="small-container single-product">
+        <div class="row">
+
+            <div class="col-2">
+                <img src="{{url_for('static', filename='images/uploads/' + data.images)}}" width="100%" id="productImg">
+            </div>
+            <div class="col-2">
+                <p>Home / T-Shirt</p>
+                <h1>{{data.name_product}}</h1>
+                <h4>{{data.price}}</h4>
+                    <input type="number" value="1">
+                    <a href="" class="btn">Add To Card</a>
+                    <h3>Product Detail
+                        <i class="fa fa-indent"></i>
+                    </h3>
+                    <br>
+                    <p>Is Updating...</p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
